@@ -1,6 +1,6 @@
 package com.bugtracker.model;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class BugList {
@@ -9,10 +9,10 @@ public class BugList {
     private String name;
     private String description;
     private List<Ticket> tickets;
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
 
-    public BugList(Long bugListId, String name, String description, List<Ticket> tickets, LocalDate createdAt) {
+    public BugList(Long bugListId, String name, String description, List<Ticket> tickets, LocalDateTime createdAt) {
         this.bugListId = bugListId;
         this.name = name;
         this.description = description;
@@ -59,12 +59,12 @@ public class BugList {
     }
 
 
-    public LocalDate getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
     public void setCreatedAt() {
-        this.createdAt = LocalDate.now();
+        this.createdAt = LocalDateTime.now();
     }
 
 
