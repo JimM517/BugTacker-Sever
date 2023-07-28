@@ -30,7 +30,7 @@ public class Ticket {
     }
 
     public Long getId() {
-        return ticketId
+        return ticketId;
     }
 
     public void setTicketId(Long ticketId) {
