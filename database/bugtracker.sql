@@ -1,6 +1,8 @@
 --Drop all db objects in order
+
 DROP TABLE IF EXISTS ticket;
 DROP TABLE IF EXISTS bug_list;
+
 
 CREATE TABLE bug_list (
     bug_list_id SERIAL,
