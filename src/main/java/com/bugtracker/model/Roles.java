@@ -2,17 +2,17 @@ package com.bugtracker.model;
 
 import java.util.Objects;
 
-public class Role {
+public class Roles {
 
     private Long roleId;
     private String name;
 
-    public Role(Long roleId, String name) {
+    public Roles(Long roleId, String name) {
         this.roleId = roleId;
         this.name = name;
     }
 
-    public Role() {
+    public Roles() {
 
     }
 
@@ -46,7 +46,7 @@ public class Role {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
+        Roles role = (Roles) o;
         return Objects.equals(roleId, role.roleId) && Objects.equals(name, role.name);
     }
 
