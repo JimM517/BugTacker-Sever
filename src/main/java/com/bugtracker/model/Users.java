@@ -4,15 +4,17 @@ import java.util.Objects;
 
 public class Users {
 
-    private Long userId;
+
+    private int userId;
     private String firstName;
     private String lastName;
-    private Long roleId;
+
+    private int roleId;
     private String email;
     private String password;
 
 
-    public Users(Long userId, String firstName, String lastName, Long roleId, String email, String password) {
+    public Users(int userId, String firstName, String lastName, int roleId, String email, String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -25,11 +27,11 @@ public class Users {
 
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -50,11 +52,11 @@ public class Users {
         this.lastName = lastName;
     }
 
-    public Long getRoleId() {
+    public int getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 
