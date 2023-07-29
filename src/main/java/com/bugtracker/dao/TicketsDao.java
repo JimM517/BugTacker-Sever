@@ -12,17 +12,17 @@ public interface TicketsDao {
 
     Tickets findByBugListId(int bugListId);
 
-    Tickets findByUserId(int userId);
+    List<Tickets> findByUserId(int userId);
 
-    Tickets findByPriority(String priority);
+   List<Tickets> findByPriority(String priority);
 
-    Tickets findByStatus(String status);
+    List<Tickets> findByStatus(String status);
 
-    Tickets findByCategory(String category);
+    List<Tickets>findByCategory(String category);
 
-    Tickets createTicket(Tickets ticket);
+    Tickets createTicket(Tickets newTicket);
 
-    Tickets updateTickets(Tickets ticket);
+    Tickets updateTickets(Tickets modifiedTicket);
 
     void deleteTicket(int ticketId);
 

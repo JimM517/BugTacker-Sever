@@ -32,4 +32,5 @@ public class BugListController {
         return jdbcBugListDao.getUsersOnCurrentBuglist(userId);
     }
 
+
 }
