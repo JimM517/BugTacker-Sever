@@ -31,7 +31,8 @@ public class JdbcBugListDao implements BugListDao {
         return results;
     }
 
-    //TODO may need to come back to this
+    //TODO JULY 29
+    // may need to come back to this
     @Override
     public List<Users> getUsersOnCurrentBuglist(int userId) {
         List<Users> results = new ArrayList<>();
@@ -62,21 +63,38 @@ public class JdbcBugListDao implements BugListDao {
 
     @Override
     public BugList createBugList(BugList newBugList) {
-        return null;
+        String sql = "INSERT INTO bug_lists (title, description, user_id) VALUES (?, ?, ?) RETURNING bug_list_id";
+        int newId = jdbcTemplate.queryForObject(sql, int.class, newBugList.getTitle(), newBugList.getDescription(), newBugList.getUserId());
+        return getByBugListId(newId);
     }
 
     @Override
-    public BugList update(BugList bugList) {
-        return null;
+    public BugList update(BugList modifiedBugList) {
+        String sql = "UPDATE bug_lists SET bug_list_id = ?, title = ?, description = ?, user_id = ? WHERE bug_list_id = ?";
+        jdbcTemplate.update(sql, modifiedBugList.getBugListId(), modifiedBugList.getTitle(), modifiedBugList.getDescription(), modifiedBugList.getUserId(), modifiedBugList.getBugListId() );
+        return getByBugListId(modifiedBugList.getBugListId());
     }
 
+    //TODO JULY 29
+    // MAY BE BETTER TO HANDLE IN SERVICE CLASS
     @Override
-    public BugList findByUser(Users user) {
+    public BugList findByUserId(int userId) {
         return null;
     }
 
+    //Simple function to add user by id, will handle the rest in service layer??
+    public void addUserToBugList(int bugListId, int addedUserId) {
+        String sql = "UPDATE bug_list SET user_id = ? WHERE bug_list_id = ?";
+        jdbcTemplate.update(sql, addedUserId, bugListId);
+    }
+
+    //TODO JULY 29
+    // MAY NEED TO UPDATE THIS LATER, CHECK RELATIONSHIPS, JUST TRYING TO GET OVERALL STRUCTURE IN MOTION
     @Override
     public void deleteBugList(int bugListId) {
+        String sql = "DELETE FROM bug_lists WHERE bug_list_id = ?";
+        jdbcTemplate.update(sql, bugListId);
+
 
     }
 

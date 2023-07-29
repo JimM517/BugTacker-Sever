@@ -16,9 +16,11 @@ public interface BugListDao {
 
     BugList createBugList(BugList newBugList);
 
-    BugList update(BugList bugList);
+    BugList update(BugList modifiedBugList);
 
-    BugList findByUser(Users user);
+    BugList findByUserId(int userId);
+
+    void addUserToBugList(int bugListId, int addedUserId);
 
     void deleteBugList(int bugListId);
 
