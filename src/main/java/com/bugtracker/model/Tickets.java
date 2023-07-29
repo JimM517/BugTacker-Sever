@@ -25,6 +25,10 @@ public class Tickets {
         this.ticketCategory = ticketCategory;
     }
 
+    public Tickets() {
+
+    }
+
     public Long getTicketId() {
         return ticketId;
     }
