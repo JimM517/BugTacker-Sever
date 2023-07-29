@@ -31,22 +31,49 @@ public class JdbcUsersDao implements UsersDao {
 
     @Override
     public Users getRole(int roleId) {
-        return null;
+        Users user = null;
+        String sql = "SELECT * FROM users " +
+                    "JOIN roles ON roles.role_id = users.role_id " +
+                    "WHERE users.role_id = ?";
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, roleId);
+        if (row.next()) {
+            user = mapRowToUser(row);
+        }
+        return user;
     }
 
     @Override
     public Users getUser(int userId) {
-        return null;
+        Users user = new Users();
+        String sql = "SELECT * FROM users WHERE user_id = ?";
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userId);
+        if (row.next()) {
+            user = mapRowToUser(row);
+        }
+        return user;
     }
 
+    //TODO maybe want to update this to accept wildcard params?
     @Override
     public int findIdFirstName(String firstName) {
-        return 0;
+        if (firstName == null) throw new IllegalArgumentException("First name cannot be blank!");
+        int userId = 0;
+        try {
+            String sql = "SELECT user_id FROM users WHERE first_name = ?";
+            userId = jdbcTemplate.queryForObject(sql, int.class, firstName);
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return userId;
     }
 
     @Override
     public Users create(Users newUser) {
-        return null;
+        String sql = "INSERT INTO users (first_name, last_name, role_id, email, user_password) VALUES (?, ?, ?, ?, ?) RETURNING user_id";
+        int newId = jdbcTemplate.queryForObject(sql, int.class, newUser.getFirstName(), newUser.getLastName(), newUser.getRoleId(), newUser.getEmail(), newUser.getPassword());
+//        newUser.setUserId(newId);
+//        return newUser;
+        return getUser(newId);
     }
 
 
