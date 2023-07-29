@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class BugList {
 
-    private Long bugListId;
+    private int bugListId;
     private String title;
     private String description;
-    private Long userId;
+    private int userId;
 
-    public BugList(Long bugListId, String title, String description, Long userId) {
+    public BugList(int bugListId, String title, String description, int userId) {
         this.bugListId = bugListId;
         this.title = title;
         this.description = description;
@@ -21,11 +21,11 @@ public class BugList {
     }
 
 
-    public Long getBugListId() {
+    public int getBugListId() {
         return bugListId;
     }
 
-    public void setBugListId(Long bugListId) {
+    public void setBugListId(int bugListId) {
         this.bugListId = bugListId;
     }
 
@@ -45,11 +45,11 @@ public class BugList {
         this.description = description;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
