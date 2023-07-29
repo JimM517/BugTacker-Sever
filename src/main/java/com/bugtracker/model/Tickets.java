@@ -4,17 +4,17 @@ import java.util.Objects;
 
 public class Tickets {
 
-    private Long ticketId;
+    private int ticketId;
     private String title;
     private String description;
-    private Long userId;
-    private Long bugListId;
+    private int userId;
+    private int bugListId;
     private String priority;
     private String status;
     private String ticketCategory;
 
 
-    public Tickets(Long ticketId, String title, String description, Long userId, Long bugListId, String priority, String status, String ticketCategory) {
+    public Tickets(int ticketId, String title, String description, int userId, int bugListId, String priority, String status, String ticketCategory) {
         this.ticketId = ticketId;
         this.title = title;
         this.description = description;
@@ -29,11 +29,11 @@ public class Tickets {
 
     }
 
-    public Long getTicketId() {
+    public int getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Long ticketId) {
+    public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
 
@@ -53,19 +53,19 @@ public class Tickets {
         this.description = description;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public Long getBugListId() {
+    public int getBugListId() {
         return bugListId;
     }
 
-    public void setBugListId(Long bugListId) {
+    public void setBugListId(int bugListId) {
         this.bugListId = bugListId;
     }
 
