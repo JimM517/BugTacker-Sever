@@ -36,8 +36,16 @@ public class BugTrackerService {
 
 
     //show the bug lists by user;
-    public BugList showCurrentListByListIdAndUserId(int bugListId, int userId) {
-        return bugListDao.getByListAndUserId(bugListId, userId);
+    public BugList showCurrentListByUser(Principal principal) {
+        Users user = getCurrentUser(principal);
+
+        BugList bugList = null;
+        for (BugList list : this.getBugLists()) {
+            if (list.getUserId() == user.getUserId()) {
+                bugList = list;
+            }
+        }
+        return bugList;
     }
 
 
