@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Comments {
 
-    private Long commentId;
-    private Long ticketId;
-    private Long userId;
+    private int commentId;
+    private int ticketId;
+    private int userId;
     private String message;
 
-    public Comments(Long commentId, Long ticketId, Long userId, String message) {
+    public Comments(int commentId, int ticketId, int userId, String message) {
         this.commentId = commentId;
         this.ticketId = ticketId;
         this.userId = userId;
@@ -20,27 +20,27 @@ public class Comments {
 
     }
 
-    public Long getCommentId() {
+    public int getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Long commentId) {
+    public void setCommentId(int commentId) {
         this.commentId = commentId;
     }
 
-    public Long getTicketId() {
+    public int getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Long ticketId) {
+    public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

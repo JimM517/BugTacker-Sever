@@ -10,11 +10,11 @@ public interface CommentsDao {
 
     Comments findByCommentId(int commentId);
 
-    Comments findByTicketId(int ticketId);
+    List<Comments> findByTicketId(int ticketId);
 
-    Comments findByUserId(int userId);
+    List<Comments> findByUserId(int userId);
 
-    Comments createComment(Comments comment);
+    Comments createComment(Comments newComment);
 
     Comments updateComment(Comments modifiedComment);
 
