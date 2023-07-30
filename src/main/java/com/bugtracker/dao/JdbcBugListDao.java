@@ -31,8 +31,7 @@ public class JdbcBugListDao implements BugListDao {
         return results;
     }
 
-    //TODO JULY 29
-    // may need to come back to this
+
     //TODO 7/30 changed this to bugListId not userid
     @Override
     public List<Users> getUsersOnCurrentBuglist(int bugListId) {
@@ -103,14 +102,16 @@ public class JdbcBugListDao implements BugListDao {
         jdbcTemplate.update(sql, addedUserId, bugListId);
     }
 
-    //TODO JULY 29
-    // MAY NEED TO UPDATE THIS LATER, CHECK RELATIONSHIPS, JUST TRYING TO GET OVERALL STRUCTURE IN MOTION
+
     @Override
     public void deleteBugList(int bugListId) {
+        //delete from tickets table first
+        String query = "DELETE FROM tickets WHERE bug_list_id = ?";
+        jdbcTemplate.update(query, bugListId);
+
+        //then delete from bug_list table
         String sql = "DELETE FROM bug_lists WHERE bug_list_id = ?";
         jdbcTemplate.update(sql, bugListId);
-
-
 
     }
 

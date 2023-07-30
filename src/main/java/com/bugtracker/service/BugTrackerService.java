@@ -51,6 +51,9 @@ public class BugTrackerService {
 
 
 
+
+
+
     //helper methods for service
     private Users getCurrentUser(Principal principal) {
         return usersDao.findByFirstName(principal.getName());
