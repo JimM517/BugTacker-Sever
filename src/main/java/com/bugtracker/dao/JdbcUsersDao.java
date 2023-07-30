@@ -53,6 +53,22 @@ public class JdbcUsersDao implements UsersDao {
         return user;
     }
 
+    @Override
+    public Users findByFirstName(String firstName) {
+        if (firstName == null) throw new IllegalArgumentException("First name cannot be blank!");
+        Users foundUser = null;
+        try {
+            for (Users user : this.findAll()) {
+                if (user.getFirstName().equalsIgnoreCase(firstName)) {
+                    foundUser = user;
+                }
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return foundUser;
+    }
+
     //TODO maybe want to update this to accept wildcard params?
     @Override
     public int findIdFirstName(String firstName) {

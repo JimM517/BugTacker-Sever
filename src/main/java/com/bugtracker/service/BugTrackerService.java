@@ -1,7 +1,12 @@
 package com.bugtracker.service;
 
 import com.bugtracker.dao.*;
+import com.bugtracker.model.BugList;
+import com.bugtracker.model.Users;
 import org.springframework.stereotype.Component;
+
+import java.security.Principal;
+import java.util.List;
 
 @Component
 public class BugTrackerService {
@@ -23,5 +28,36 @@ public class BugTrackerService {
         this.ticketAssignmentsDao = ticketAssignmentsDao;
     }
 
+
+    //Show all buglists
+    public List<BugList> getBugLists() {
+        return bugListDao.listAllCurrentProject();
+    }
+
+
+    //show the bug lists by user;
+    public BugList showCurrentListByListIdAndUserId(int bugListId, int userId) {
+        return bugListDao.getByListAndUserId(bugListId, userId);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    //helper methods for service
+    private Users getCurrentUser(Principal principal) {
+        return usersDao.findByFirstName(principal.getName());
+    }
+
+    private int getUserId(Principal principal) {
+        return usersDao.findIdFirstName(principal.getName());
+    }
 
 }

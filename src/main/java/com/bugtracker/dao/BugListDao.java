@@ -10,9 +10,12 @@ public interface BugListDao {
 
     List<BugList> listAllCurrentProject();
 
-    List<Users> getUsersOnCurrentBuglist(int userId);
+    List<Users> getUsersOnCurrentBuglist(int bugListId);
 
     BugList getByBugListId(int bugListId);
+
+    //TODO new 7/30
+    BugList getByListAndUserId(int bugListId, int userId);
 
     BugList createBugList(BugList newBugList);
 

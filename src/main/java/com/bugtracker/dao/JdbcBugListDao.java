@@ -33,14 +33,15 @@ public class JdbcBugListDao implements BugListDao {
 
     //TODO JULY 29
     // may need to come back to this
+    //TODO 7/30 changed this to bugListId not userid
     @Override
-    public List<Users> getUsersOnCurrentBuglist(int userId) {
+    public List<Users> getUsersOnCurrentBuglist(int bugListId) {
         List<Users> results = new ArrayList<>();
 
         String sql = "SELECT first_name, last_name FROM users " +
                     "JOIN bug_lists ON bug_lists.user_id = users.user_id " +
-                    "WHERE bug_lists.user_id = ?";
-        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userId);
+                    "WHERE bug_lists.bug_list_id = ?";
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, bugListId);
         while(row.next()) {
             Users user = new Users();
             user.setFirstName(row.getString("first_name"));
@@ -55,6 +56,20 @@ public class JdbcBugListDao implements BugListDao {
         BugList bugList = null;
         String sql = "SELECT * FROM bug_lists WHERE bug_list_id = ?";
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, bugListId);
+        if (row.next()) {
+            bugList = mapRowToBugList(row);
+        }
+        return bugList;
+    }
+
+    //TODO 7/30 NEW
+    @Override
+    public BugList getByListAndUserId(int bugListId, int userId) {
+        BugList bugList = null;
+        String sql = "SELECT * FROM bug_lists " +
+                    "JOIN users ON users.user_id = bug_lists.user_id " +
+                    "WHERE bug_list_id = ? AND user_id = ?";
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, bugListId, userId);
         if (row.next()) {
             bugList = mapRowToBugList(row);
         }
@@ -94,6 +109,7 @@ public class JdbcBugListDao implements BugListDao {
     public void deleteBugList(int bugListId) {
         String sql = "DELETE FROM bug_lists WHERE bug_list_id = ?";
         jdbcTemplate.update(sql, bugListId);
+
 
 
     }

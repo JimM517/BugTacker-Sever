@@ -12,6 +12,9 @@ public interface UsersDao {
 
     Users getUser(int userId);
 
+    //will probably change this once JWT/security is implemented
+    Users findByFirstName(String firstName);
+
     int findIdFirstName(String firstName);
 
     Users create(Users newUser);
