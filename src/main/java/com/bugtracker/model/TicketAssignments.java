@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class TicketAssignments {
 
-    private Long ticketAssignmentId;
-    private Long ticketId;
-    private Long userId;
+    private int ticketAssignmentId;
+    private int ticketId;
+    private int userId;
 
 
-    public TicketAssignments(Long ticketAssignmentId, Long ticketId, Long userId) {
+    public TicketAssignments(int ticketAssignmentId, int ticketId, int userId) {
         this.ticketAssignmentId = ticketAssignmentId;
         this.ticketId = ticketId;
         this.userId = userId;
@@ -19,27 +19,27 @@ public class TicketAssignments {
 
     }
 
-    public Long getTicketAssignmentId() {
+    public int getTicketAssignmentId() {
         return ticketAssignmentId;
     }
 
-    public void setTicketAssignmentId(Long ticketAssignmentId) {
+    public void setTicketAssignmentId(int ticketAssignmentId) {
         this.ticketAssignmentId = ticketAssignmentId;
     }
 
-    public Long getTicketId() {
+    public int getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Long ticketId) {
+    public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
