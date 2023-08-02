@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Roles {
 
-    private Long roleId;
+    private int roleId;
     private String name;
 
-    public Roles(Long roleId, String name) {
+    public Roles(int roleId, String name) {
         this.roleId = roleId;
         this.name = name;
     }
@@ -16,11 +16,11 @@ public class Roles {
 
     }
 
-    public Long getRoleId() {
+    public int getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(Long roleId) {
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 

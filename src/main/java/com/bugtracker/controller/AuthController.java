@@ -1,12 +1,10 @@
 package com.bugtracker.controller;
 
 import com.bugtracker.dao.JdbcUsersDao;
-import com.bugtracker.model.Users;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -18,11 +16,23 @@ public class AuthController {
         this.jdbcUsersDao = jdbcUsersDao;
     }
 
-
     @GetMapping("/login")
-    public List<Users> getAllUsers() {
-        return jdbcUsersDao.findAll();
+    public String home() {
+        return "hello, world!";
     }
+
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/admin")
+    public String admin() {
+        return "hello, admin!";
+    }
+
+
+//    @GetMapping("/login")
+//    public List<Users> getAllUsers() {
+//        return jdbcUsersDao.findAll();
+//    }
 
 
 
