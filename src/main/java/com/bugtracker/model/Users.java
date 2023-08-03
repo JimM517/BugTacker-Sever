@@ -13,6 +13,8 @@ public class Users {
     private String email;
     private String password;
 
+    private String role;
+
 
     public Users(int userId, String firstName, String lastName, int roleId, String email, String password) {
         this.userId = userId;
@@ -21,6 +23,12 @@ public class Users {
         this.roleId = roleId;
         this.email = email;
         this.password = password;
+    }
+
+    public Users(String email, String password, String role) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 
     public Users() {
@@ -74,6 +82,14 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
